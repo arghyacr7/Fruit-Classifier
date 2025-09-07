@@ -72,7 +72,7 @@ fruit-classifier/
 The `predict.py` script allows classifying a new image easily:
 
 ```bash
-python predict.py "test/Lemon Meyer 1/28_100.jpg"
+python predict.py "test/Onion Red 2/28_100.jpg"
 ```
 
 **Example Output:**
