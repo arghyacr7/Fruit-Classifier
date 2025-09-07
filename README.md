@@ -1,112 +1,114 @@
-🍏 Fruit Classifier
-A deep learning project to classify fruits using TensorFlow and Keras. This project leverages transfer learning with MobileNetV2 and provides a straightforward workflow for training and real-time predictions.
+# 🍏 Fruit Classifier
 
-🚀 Key Features
-Advanced Classification: Utilizes a deep convolutional neural network for high-accuracy fruit classification.
+A deep learning project for classifying fruits using **TensorFlow** and **Keras**. This project leverages **transfer learning** with MobileNetV2 and provides a straightforward workflow for training and real-time predictions.
 
-Transfer Learning: Employs a pre-trained MobileNetV2 model to accelerate training and improve performance.
+---
 
-Real-time Prediction: Supports real-time image predictions with a simple command-line interface.
+## 🚀 Key Features
 
-Comprehensive Dataset: Trained on the extensive Fruits-360 dataset.
+- **Advanced Classification:** Utilizes a deep convolutional neural network for high-accuracy fruit classification.  
+- **Transfer Learning:** Employs a pre-trained MobileNetV2 model to accelerate training and improve performance.  
+- **Real-time Prediction:** Supports real-time image predictions via a simple command-line interface.  
+- **Comprehensive Dataset:** Trained on the extensive Fruits-360 dataset.
 
-<br>
+---
 
-<br>
+## 📸 Project Demo
 
-📸 Project Demo
-![Fruit Prediction Example](./assets/Screenshot 2025-09-07 205549.png)
-Example prediction showing Onion Red 2 with 100% confidence.
+![Fruit Prediction Example](./assets/Screenshot%202025-09-07%20205549.png)  
+*Example prediction showing Onion Red 2 with 100% confidence.*
 
-🗂 Dataset
-The project uses the Fruits-360 dataset, which contains over 100k images of fruits across 210 classes.
+---
 
-Training set: ~67,692 images
+## 🗂 Dataset
 
-Test set: ~22,688 images
+This project uses the **Fruits-360 dataset**, containing over **100k images** of fruits across **210 classes**.
 
-Image size: 150x150 pixels
+- **Training set:** ~67,692 images  
+- **Test set:** ~22,688 images  
+- **Image size:** 150x150 pixels  
 
-<br>
+> ⚠️ Note: The dataset is automatically downloaded and structured when running the training script. You can also access it directly via the [Fruits-360 Dataset](https://www.kaggle.com/moltean/fruits).
 
-Note: The dataset is automatically downloaded and structured when you run the training script, but you can also access it directly via the following link: Fruits-360
+---
 
-⚙️ Project Structure
-The project is organized into a clean and easy-to-navigate directory structure.
+## ⚙️ Project Structure
 
+```
 fruit-classifier/
-├── train/              # Training images
-├── test/               # Test images
-├── assets/             # Project assets like screenshots and diagrams
-├── train_model.py      # Script to train the model
-├── predict.py          # Script to predict a single image
+├── train/                # Training images
+├── test/                 # Test images
+├── assets/               # Project assets like screenshots
+├── train_model.py        # Script to train the model
+├── predict.py            # Script to predict a single image
 ├── fruit_classifier.keras # Trained model file
 └── README.md
+```
 
+---
 
+## 🛠 Model Training & Workflow
 
-🛠 Model Training & Workflow
-This section outlines the step-by-step process of training the model.
+### 📝 Workflow
 
-📝 Workflow
-Data Preparation: The training script automatically loads and preprocesses images from the train/ and test/ directories.
+1. **Data Preparation:** Automatically loads and preprocesses images from `train/` and `test/` directories.  
+2. **Model Initialization:** Loads a pre-trained MobileNetV2 model as the base, initially freezing its layers to preserve learned features.  
+3. **Initial Training (15 epochs):** Adds custom classification layers on top of the base model and trains on the dataset.  
+4. **Fine-tuning (5 epochs):** Unfreezes final layers of the base model and trains with a very low learning rate to optimize performance.  
+5. **Model Export:** Saves the final fine-tuned model as `fruit_classifier.keras`.
 
-Model Initialization: A pre-trained MobileNetV2 model is loaded as the base, with its layers initially frozen to preserve learned features.
+---
 
-Initial Training (15 epochs): Custom classification layers are added on top of the base model and trained on the dataset.
+### 📈 Training Metrics
 
-Fine-tuning (5 epochs): The base model's final layers are unfrozen and trained with a very low learning rate to fine-tune the model's performance on the fruit dataset.
+- **Final Test Accuracy:** ~98%  
+- **Trainable Parameters:** ~2 million  
+- **Total Training Time:** ~2 hours (hardware dependent)  
 
-Model Export: The final, fine-tuned model is saved as fruit_classifier.keras for future use.
+---
 
-📈 Training Metrics
-Final Test Accuracy: ~98%
+## 🖼 Image Prediction
 
-Trainable Parameters: ~2 million
+The `predict.py` script allows classifying a new image easily:
 
-Total Training Time: ~2 hours (dependent on hardware)
-
-🖼 Image Prediction
-The predict.py script makes it simple to classify a new image using the trained model.
-
-💻 Usage
+```bash
 python predict.py "test/Lemon Meyer 1/28_100.jpg"
+```
 
+**Example Output:**
 
-
-Output Example:
-
+```
 Predicted Class: Onion Red 2 (Confidence: 100.00%)
+```
 
+---
 
+## ⚠️ Challenges & Solutions
 
-⚠️ Challenges & Solutions
-Large Dataset Size: The Fruits-360 dataset is large, which can lead to extended training times. This was mitigated by using transfer learning, which significantly reduced the time needed to achieve high accuracy.
+- **Large Dataset Size:** Training on Fruits-360 can be time-consuming. Mitigated using transfer learning to reduce time while maintaining high accuracy.  
+- **TensorFlow Warnings:** Informational warnings about missing CPU instructions (SSE, AVX, FMA) can be safely ignored.  
+- **File Path Management:** Carefully handled file paths, especially with spaces, to ensure cross-platform compatibility.
 
-TensorFlow Warnings: TensorFlow often displays warnings about missing CPU instructions (SSE, AVX, FMA). These are informational and can be safely ignored.
+---
 
-File Path Management: Handling file paths, especially with spaces, required careful string formatting in scripts to ensure cross-platform compatibility.
+## 📈 Future Improvements
 
-📈 Future Improvements
-Alternative Architectures: Explore other pre-trained models like ResNet or EfficientNet for potential performance gains.
+- **Alternative Architectures:** Experiment with ResNet, EfficientNet, or other pre-trained models.  
+- **Hyperparameter Tuning:** Optimize learning rate, dropout, and batch size for better performance.  
+- **User Interface:** Develop a GUI or web app for instant image predictions.
 
-Hyperparameter Tuning: Fine-tune the learning rate, dropout rate, and batch size to optimize model performance.
+---
 
-User Interface: Develop a simple GUI or web application to allow users to upload images and get instant predictions.
+## 📌 Requirements
 
-📌 Requirements
-Dependencies:
+- **Python 3.11**  
+- **TensorFlow 2.x**  
+- **NumPy**  
+- **Pillow**
 
-Python 3.11
+**Installation:**
 
-TensorFlow 2.x
-
-NumPy
-
-Pillow
-
-Installation:
-
+```bash
 pip install tensorflow numpy pillow
-
+```
 
