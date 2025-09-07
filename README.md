@@ -15,6 +15,7 @@ Comprehensive Dataset: Trained on the extensive Fruits-360 dataset.
 <br>
 
 📸 Project Demo
+![Fruit Prediction Example](./assets/Screenshot 2025-09-07 205549.png)
 Example prediction showing Onion Red 2 with 100% confidence.
 
 🗂 Dataset
@@ -41,6 +42,8 @@ fruit-classifier/
 ├── predict.py          # Script to predict a single image
 ├── fruit_classifier.keras # Trained model file
 └── README.md
+
+
 
 🛠 Model Training & Workflow
 This section outlines the step-by-step process of training the model.
@@ -69,9 +72,13 @@ The predict.py script makes it simple to classify a new image using the trained 
 💻 Usage
 python predict.py "test/Lemon Meyer 1/28_100.jpg"
 
+
+
 Output Example:
 
 Predicted Class: Onion Red 2 (Confidence: 100.00%)
+
+
 
 ⚠️ Challenges & Solutions
 Large Dataset Size: The Fruits-360 dataset is large, which can lead to extended training times. This was mitigated by using transfer learning, which significantly reduced the time needed to achieve high accuracy.
@@ -101,3 +108,5 @@ Pillow
 Installation:
 
 pip install tensorflow numpy pillow
+
+
